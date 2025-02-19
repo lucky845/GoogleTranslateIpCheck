@@ -36,3 +36,6 @@ sudo ./GoogleTranslateIpCheck
 
 
 #### 扫描逻辑参考 https://repo.or.cz/gscan_quic.git 项目,感谢大佬
+
+添加了python脚本用于将配置上传到gists用于switchhosts订阅更新
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/a9541596-b429-4ebc-8d86-776e43f2a0e2" />
