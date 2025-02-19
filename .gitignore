@@ -363,6 +363,7 @@ MigrationBackup/
 FodyWeavers.xsd
 /src/GoogleTranslateIpCheck/.idea/.idea.GoogleTranslateIpCheck/.idea
 
+.vscode
 .venv
 .env
 downloads
