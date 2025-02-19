@@ -200,13 +200,13 @@ def run_ip_scan():
     except Exception as e:
         raise Exception(f"执行失败: {e}")
 
-## 从 .env 文件中获取 GitHub Token 和 Gist ID
-GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
-GIST_ID = os.getenv("GIST_ID")
-
 # 3. 更新 GitHub Gist
 def update_gist(content):
     """更新或创建 GitHub Gist"""
+    # 从系统环境变量获取（GitHub Actions 会传入这些变量）
+    GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
+    GIST_ID = os.getenv("GIST_ID")
+
     if not GITHUB_TOKEN or not GIST_ID:
         raise Exception("缺少 GitHub Token 或 Gist ID，请在 .env 文件中配置")
 
