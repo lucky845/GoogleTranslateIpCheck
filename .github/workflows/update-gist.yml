@@ -8,27 +8,26 @@ on:
 jobs:
   update-gist:
     runs-on: ubuntu-latest
-    
-    steps:
-    - name: 检出代码
-      uses: actions/checkout@v3
-      
-    - name: 设置 Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.12.8'
-        
-    - name: 安装依赖
-      run: |
-        python -m pip install --upgrade pip
-        pip install requests python-dotenv
-        
-    - name: 运行更新脚本
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GIST_ID: ${{ secrets.GIST_ID }}
-      run: python update_gist.py
-
     permissions:
       contents: read
-      
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v3
+
+      - name: 设置 Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12.8'
+
+      - name: 安装依赖
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests python-dotenv pexpect
+
+      - name: 运行更新脚本
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIST_ID: ${{ secrets.GIST_ID }}
+          GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
+        run: python update_gist.py
