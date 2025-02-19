@@ -71,18 +71,23 @@ def run_ip_scan():
         
         os.chmod(executable_path, 0o755)
         
-        # 使用 -n 参数跳过写入 hosts 文件
-        cmd = [executable_path, "-s", "-n"]
+        # 使用管道模拟输入 'n' 来跳过写入 hosts 文件
+        cmd = [executable_path, "-s"]
         
         print("\n开始扫描IP...")
         process = subprocess.Popen(
             cmd,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
+            stdin=subprocess.PIPE,
             text=True,
             bufsize=1,
             universal_newlines=True
         )
+        
+        # 模拟输入 'n'
+        process.stdin.write('n\n')
+        process.stdin.flush()
         
         output = []
         best_ip = None
