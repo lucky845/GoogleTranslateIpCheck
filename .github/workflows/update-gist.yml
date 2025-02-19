@@ -29,6 +29,6 @@ jobs:
         GIST_ID: ${{ secrets.GIST_ID }}
       run: python update_gist.py
 
-permissions:
-  contents: read
-  gists: write
+    permissions:
+      contents: read
+      gists: write
