@@ -27,7 +27,6 @@ jobs:
 
       - name: 运行更新脚本
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
           GIST_ID: ${{ secrets.GIST_ID }}
-          GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
         run: python update_gist.py
